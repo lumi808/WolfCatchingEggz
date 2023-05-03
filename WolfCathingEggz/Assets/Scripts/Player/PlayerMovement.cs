@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour
             _playerSpriteRenderer.flipX = Input.GetKeyDown(KeyCode.Q);
 
             if (_playerSpriteRenderer.flipX)
-                _basketPoint.localPosition = new Vector2(-0.55f, -0.55f);
+                _basketPoint.localPosition = new Vector2(-0.45f, -0.32f);
             else
-                _basketPoint.localPosition = new Vector2(1.3f, -0.55f);
+                _basketPoint.localPosition = new Vector2(1.24f, -0.3f);
         }
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
             else
                 _basketPoint.localPosition = new Vector2(1.15f, -1.15f);
         }
+
+        CatchObjects();
     }
 
     private void OnDrawGizmosSelected()
@@ -40,5 +42,18 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(_basketPoint.position, basketRadius);
+    }
+
+    private void CatchObjects()
+    {
+        Collider2D[] objects = Physics2D.OverlapCircleAll(_basketPoint.position, basketRadius);
+
+        if (objects.Length == 0)
+            return;
+                
+        foreach (Collider2D obj in objects)
+        {
+            obj.GetComponent<IInteractable>().Interact();
+        }
     }
 }

@@ -372,9 +372,14 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.2.13f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.2.13f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Scripts/Bomb/Bomb.cs"
+"Assets/Scripts/Eggs/Egg.cs"
 "Assets/Scripts/Eggs/EggsHandler.cs"
+"Assets/Scripts/Interface/IInteractable.cs"
 "Assets/Scripts/Player/PlayerAnimation.cs"
+"Assets/Scripts/Player/PlayerHealth.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Point/PointSystem.cs"
 -langversion:9.0
 
 /deterministic
