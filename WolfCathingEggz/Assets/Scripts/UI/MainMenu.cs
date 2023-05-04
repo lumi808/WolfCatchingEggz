@@ -25,9 +25,9 @@ public class MainMenu : MonoBehaviour
         _playButton.onClick.AddListener(ChooseLevel);
         _leaderboardButton.onClick.AddListener(GoToLeaders);
         _quitButton.onClick.AddListener(Quit);
-        _easyButton.onClick.AddListener(StartEasy);
-        _mediumButton.onClick.AddListener(StartMedium);
-        _hardButton.onClick.AddListener(StartHard);
+        _easyButton.onClick.AddListener(() => StartGame(1f));
+        _mediumButton.onClick.AddListener(() => StartGame(2f));
+        _hardButton.onClick.AddListener(() => StartGame(3f));
         _backButton.onClick.AddListener(GoBack);
     }
 
@@ -37,19 +37,10 @@ public class MainMenu : MonoBehaviour
         _mainPanel.SetActive(true);
     }
 
-    private void StartHard()
+    private void StartGame(float time)
     {
         SceneManager.LoadScene(1);
-    }
-
-    private void StartMedium()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    private void StartEasy()
-    {
-        SceneManager.LoadScene(1);
+        Time.timeScale = time;
     }
 
     private void Quit()
