@@ -380,6 +380,8 @@
 "Assets/Scripts/Player/PlayerHealth.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/Point/PointSystem.cs"
+"Assets/Scripts/UI/LoseMenu.cs"
+"Assets/Scripts/UI/MainMenu.cs"
 -langversion:9.0
 
 /deterministic

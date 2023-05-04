@@ -17,4 +17,9 @@ public class PointSystem : MonoBehaviour
     {
         _points++;
     }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
 }

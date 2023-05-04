@@ -33,7 +33,14 @@ public class PlayerMovement : MonoBehaviour
                 _basketPoint.localPosition = new Vector2(1.15f, -1.15f);
         }
 
-        CatchObjects();
+        List<IInteractable> cathedObjects = CatchObjects();
+        if(cathedObjects != null && cathedObjects.Count > 0)
+        {
+            foreach(IInteractable obj in cathedObjects)
+            {
+                obj.Interact();
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -44,16 +51,24 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(_basketPoint.position, basketRadius);
     }
 
-    private void CatchObjects()
+    private List<IInteractable> CatchObjects()
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(_basketPoint.position, basketRadius);
 
         if (objects.Length == 0)
-            return;
-                
+            return null;
+
+        List<IInteractable> interactables = new List<IInteractable>();
+
         foreach (Collider2D obj in objects)
         {
-            obj.GetComponent<IInteractable>().Interact();
+            IInteractable interactable = obj.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactables.Add(interactable);
+            }
         }
+
+        return interactables;
     }
 }
